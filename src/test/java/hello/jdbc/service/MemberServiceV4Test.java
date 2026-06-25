@@ -4,6 +4,7 @@ import hello.jdbc.domain.Member;
 import hello.jdbc.repository.MemberRepository;
 import hello.jdbc.repository.MemberRepositoryV3;
 import hello.jdbc.repository.MemberRepositoryV4_1;
+import hello.jdbc.repository.MemberRepositoryV4_2;
 import java.sql.SQLException;
 import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -47,7 +49,8 @@ class MemberServiceV4Test {
 
         @Bean
         MemberRepository memberRepository() {
-            return new MemberRepositoryV4_1(dataSource);
+            // return new MemberRepositoryV4_1(dataSource);
+            return new MemberRepositoryV4_2(dataSource);
         }
 
         @Bean
